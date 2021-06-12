@@ -47,6 +47,40 @@ class OmdbContainer extends Component {
     this.filterByName(this.state.filter);
   };
 
+  sortAZ = (event) => {
+    event.preventDefault();
+    if (this.filter) {
+      this.setState({
+        employees: this.state.employees.sort((a, b) =>
+          a.name.last > b.name.last ? 1 : b.name.last > a.name.last ? -1 : 0
+        ),
+      });
+    } else {
+      this.setState({
+        result: this.state.result.sort((a, b) =>
+          a.name.last > b.name.last ? 1 : b.name.last > a.name.last ? -1 : 0
+        ),
+      });
+    }
+  };
+
+  sortZA = (event) => {
+    event.preventDefault();
+    if (this.filter) {
+      this.setState({
+        employees: this.state.employees.sort((a, b) =>
+          a.name.last < b.name.last ? 1 : b.name.last < a.name.last ? -1 : 0
+        ),
+      });
+    } else {
+      this.setState({
+        result: this.state.result.sort((a, b) =>
+          a.name.last < b.name.last ? 1 : b.name.last < a.name.last ? -1 : 0
+        ),
+      });
+    }
+  };
+
   render() {
     return (
       <Container>
@@ -94,6 +128,8 @@ class OmdbContainer extends Component {
                 value={this.state.filter}
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
+                sortAZ={this.sortAZ}
+                sortZA={this.sortZA}
               />
             </Card>
           </Col>

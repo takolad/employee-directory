@@ -19,15 +19,16 @@ function filterResults(props) {
           Filter
         </button>
         <br />
-        {/* <button onClick={props.} className="btn btn-primary">
-          Gender Filter
-        </button> */}
+        <br />
+        <button className="btn btn-primary" onClick={props.sortAZ}>
+          {"A > Z"}
+        </button>{" "}
+        <button className="btn btn-primary" onClick={props.sortZA}>
+          {"Z > A"}
+        </button>
       </div>
     </form>
   );
 }
 
 export default filterResults;
-
-// potentional filters
-// gender, name, email
