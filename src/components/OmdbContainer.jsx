@@ -22,13 +22,14 @@ class OmdbContainer extends Component {
   searchEmployees = () => {
     API.search()
       .then((res) => this.setState({ result: res.data.results }))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   filterByName = (name) => {
     const employee = this.state.result.filter((employee) => {
       let empName = employee.name.first + " " + employee.name.last;
-      return empName.includes(name.trim());
+      empName = empName.toLowerCase();
+      return empName.includes(name.trim().toLowerCase());
     });
     this.setState({ employees: employee });
   };
