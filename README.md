@@ -14,6 +14,9 @@
 ![Filtered Search](assets/images/img-filter.png)
 ![Sorted Search](assets/images/img-sorted.png)
 
+## Links
+[Deployed Site](https://takolad.github.io/employee-directory/)
+
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
