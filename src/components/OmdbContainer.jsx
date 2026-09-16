@@ -40,7 +40,7 @@ class OmdbContainer extends Component {
     this.setState({
       [name]: value,
     });
-    this.filterByName(this.state.filter);
+    this.filterByName(value);
   };
 
   handleFormSubmit = (event) => {
@@ -50,7 +50,7 @@ class OmdbContainer extends Component {
 
   sortAZ = (event) => {
     event.preventDefault();
-    if (this.filter) {
+    if (this.state.filter) {
       this.setState({
         employees: this.state.employees.sort((a, b) =>
           a.name.last > b.name.last ? 1 : b.name.last > a.name.last ? -1 : 0
@@ -67,7 +67,7 @@ class OmdbContainer extends Component {
 
   sortZA = (event) => {
     event.preventDefault();
-    if (this.filter) {
+    if (this.state.filter) {
       this.setState({
         employees: this.state.employees.sort((a, b) =>
           a.name.last < b.name.last ? 1 : b.name.last < a.name.last ? -1 : 0
