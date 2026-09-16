@@ -5,9 +5,10 @@ import React from "react";
 
 function Col(props) {
   const size = props.size.split(" ").map(size => "col-" + size).join(" ");
+  const order = props.order ? props.order.split(" ").map(order => "order-" + order).join(" ") : "";
 
   return (
-    <div className={size}>
+    <div className={size + " " + order}>
       {props.children}
     </div>
   );
