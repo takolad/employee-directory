@@ -22,13 +22,14 @@ class OmdbContainer extends Component {
   searchEmployees = () => {
     API.search()
       .then((res) => this.setState({ result: res.data.results }))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   filterByName = (name) => {
     const employee = this.state.result.filter((employee) => {
       let empName = employee.name.first + " " + employee.name.last;
-      return empName.includes(name.trim());
+      empName = empName.toLowerCase();
+      return empName.includes(name.trim().toLowerCase());
     });
     this.setState({ employees: employee });
   };
@@ -39,7 +40,7 @@ class OmdbContainer extends Component {
     this.setState({
       [name]: value,
     });
-    this.filterByName(this.state.filter);
+    this.filterByName(value);
   };
 
   handleFormSubmit = (event) => {
@@ -49,7 +50,7 @@ class OmdbContainer extends Component {
 
   sortAZ = (event) => {
     event.preventDefault();
-    if (this.filter) {
+    if (this.state.filter) {
       this.setState({
         employees: this.state.employees.sort((a, b) =>
           a.name.last > b.name.last ? 1 : b.name.last > a.name.last ? -1 : 0
@@ -66,7 +67,7 @@ class OmdbContainer extends Component {
 
   sortZA = (event) => {
     event.preventDefault();
-    if (this.filter) {
+    if (this.state.filter) {
       this.setState({
         employees: this.state.employees.sort((a, b) =>
           a.name.last < b.name.last ? 1 : b.name.last < a.name.last ? -1 : 0
@@ -85,7 +86,7 @@ class OmdbContainer extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-8">
+          <Col size="md-8" order="2 md-1">
             <Card heading={"Employee Directory"}>
               {this.state.result ? (
                 this.state.filter.length < 1 ? (
@@ -122,7 +123,7 @@ class OmdbContainer extends Component {
               )}
             </Card>
           </Col>
-          <Col size="md-4">
+          <Col size="md-4" order="1 md-2">
             <Card heading="Filter">
               <FilterForm
                 value={this.state.filter}
