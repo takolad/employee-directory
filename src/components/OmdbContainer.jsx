@@ -86,7 +86,7 @@ class OmdbContainer extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-8">
+          <Col size="md-8" order="2 md-1">
             <Card heading={"Employee Directory"}>
               {this.state.result ? (
                 this.state.filter.length < 1 ? (
@@ -123,7 +123,7 @@ class OmdbContainer extends Component {
               )}
             </Card>
           </Col>
-          <Col size="md-4">
+          <Col size="md-4" order="1 md-2">
             <Card heading="Filter">
               <FilterForm
                 value={this.state.filter}
